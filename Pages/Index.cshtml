@@ -2,18 +2,18 @@
 @page
 @model lab7.Pages.IndexModel
 
-<h1>Conversion Service Test</h1>
+<h1>Из градусов Цельсия в градусы Фаренгейта</h1>
 
 <form method="post">
-    <label for="fahrenheit">Fahrenheit:</label>
+    <label for="fahrenheit">Фаренгейт:</label>
     <input type="text" id="fahrenheit" name="fahrenheit" />
 
-    <input type="submit" value="Convert to Celsius" />
+    <input type="submit" value="Перевести в градусы Цельсия" />
 </form>
 
 @if (Model.Result != null)
 {
-    <h2>Result:</h2>
-    <p>Celsius: @Model.Result</p>
+    <h2>Результат:</h2>
+    <p>Цельсий: @Model.Result</p>
 }
 

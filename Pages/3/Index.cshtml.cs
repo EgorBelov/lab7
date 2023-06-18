@@ -34,18 +34,18 @@ namespace lab7.Pages._3
             return RedirectToPage();
         }
 
-        //public IActionResult OnPostDelete(long id)
-        //{
-        //    var itemToDelete = _dbContext.ToDoItems.Find(id);
+        public IActionResult OnPostDelete(long id)
+        {
+            var itemToDelete = _dbContext.ToDoItems.Find(id);
 
-        //    if (itemToDelete != null)
-        //    {
-        //        _dbContext.ToDoItems.Remove(itemToDelete);
-        //        _dbContext.SaveChanges();
-        //    }
+            if (itemToDelete != null)
+            {
+                _dbContext.ToDoItems.Remove(itemToDelete);
+                _dbContext.SaveChanges();
+            }
 
-        //    return RedirectToPage();
-        //}
+            return RedirectToPage();
+        }
         public IActionResult OnPostToggleComplete(long id)
         {
             var itemToToggle = _dbContext.ToDoItems.Find(id);
