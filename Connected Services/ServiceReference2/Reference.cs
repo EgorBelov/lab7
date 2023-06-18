@@ -9,7 +9,45 @@
 
 namespace ServiceReference2
 {
+    using System.Runtime.Serialization;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CurrencyRate", Namespace="http://schemas.datacontract.org/2004/07/FahrenheitToCelsiusConversion")]
+    public partial class CurrencyRate : object
+    {
+        
+        private string CurrencyCodeField;
+        
+        private decimal RateField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CurrencyCode
+        {
+            get
+            {
+                return this.CurrencyCodeField;
+            }
+            set
+            {
+                this.CurrencyCodeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Rate
+        {
+            get
+            {
+                return this.RateField;
+            }
+            set
+            {
+                this.RateField = value;
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference2.ICurrencyConversionService")]
@@ -18,6 +56,9 @@ namespace ServiceReference2
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICurrencyConversionService/ConvertCurrency", ReplyAction="http://tempuri.org/ICurrencyConversionService/ConvertCurrencyResponse")]
         System.Threading.Tasks.Task<decimal> ConvertCurrencyAsync(decimal amount, string sourceCurrency, string targetCurrency);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICurrencyConversionService/GetAvailableCurrencies", ReplyAction="http://tempuri.org/ICurrencyConversionService/GetAvailableCurrenciesResponse")]
+        System.Threading.Tasks.Task<ServiceReference2.CurrencyRate[]> GetAvailableCurrenciesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
@@ -73,6 +114,11 @@ namespace ServiceReference2
         public System.Threading.Tasks.Task<decimal> ConvertCurrencyAsync(decimal amount, string sourceCurrency, string targetCurrency)
         {
             return base.Channel.ConvertCurrencyAsync(amount, sourceCurrency, targetCurrency);
+        }
+        
+        public System.Threading.Tasks.Task<ServiceReference2.CurrencyRate[]> GetAvailableCurrenciesAsync()
+        {
+            return base.Channel.GetAvailableCurrenciesAsync();
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()

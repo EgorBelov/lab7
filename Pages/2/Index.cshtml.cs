@@ -55,6 +55,7 @@ namespace lab7.Pages._2
 
             return Page();
         }
+        
 
         private async Task<List<Currency>> GetAvailableCurrencies()
         {
