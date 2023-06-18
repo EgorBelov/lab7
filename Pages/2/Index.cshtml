@@ -1,0 +1,75 @@
+﻿@page
+@model lab7.Pages._2.IndexModel
+@{
+}
+@*<h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <div>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="Amount" required>
+    </div>
+    <div>
+        <label for="sourceCurrency">Source Currency:</label>
+        <select id="sourceCurrency" name="SourceCurrency" required>
+            @foreach (var currency in Model.AvailableCurrencies)
+            {
+                <option value="@currency.Code">@currency.Name (@currency.Code)</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="targetCurrency">Target Currency:</label>
+        <select id="targetCurrency" name="TargetCurrency" required>
+            @foreach (var currency in Model.AvailableCurrencies)
+            {
+                <option value="@currency.Code">@currency.Name (@currency.Code)</option>
+            }
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Convert">
+    </div>
+</form>
+
+@if (Model.ConvertedAmount != null)
+{
+    <h2>Result:</h2>
+    <p>@Model.Amount @Model.SourceCurrency = @Model.ConvertedAmount @Model.TargetCurrency</p>
+}
+*@
+<h1>Currency Conversion</h1>
+
+<form method="post">
+    <div>
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="Amount" />
+    </div>
+    <div>
+        <label for="sourceCurrency">Source Currency:</label>
+        <select id="sourceCurrency" name="SourceCurrency">
+            @foreach (var currency in Model.AvailableCurrencies)
+            {
+                <option value="@currency">@currency</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="targetCurrency">Target Currency:</label>
+        <select id="targetCurrency" name="TargetCurrency">
+            @foreach (var currency in Model.AvailableCurrencies)
+            {
+                <option value="@currency">@currency</option>
+            }
+        </select>
+    </div>
+    <div>
+        <button type="submit">Convert</button>
+    </div>
+</form>
+
+@if (Model.ConversionResult.HasValue)
+{
+    <h2>Result:</h2>
+    <p>@Model.ConversionResult.Value.ToString("N2")</p>
+}

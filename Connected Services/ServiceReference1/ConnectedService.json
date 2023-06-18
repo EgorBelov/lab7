@@ -1,0 +1,32 @@
+{
+  "ExtendedData": {
+    "inputs": [
+      "http://localhost:56062/ConversionService.svc"
+    ],
+    "collectionTypes": [
+      "System.Array",
+      "System.Collections.Generic.Dictionary`2"
+    ],
+    "namespaceMappings": [
+      "*, ServiceReference1"
+    ],
+    "references": [
+      "Microsoft.AspNetCore.Mvc.Razor.Extensions, {Microsoft.AspNetCore.Mvc.Razor.Extensions, 6.0.0}",
+      "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation, {Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation, 7.0.7}",
+      "Microsoft.AspNetCore.Razor.Language, {Microsoft.AspNetCore.Razor.Language, 6.0.0}",
+      "Microsoft.CodeAnalysis, {Microsoft.CodeAnalysis.Common, 4.0.0}",
+      "Microsoft.CodeAnalysis.CSharp, {Microsoft.CodeAnalysis.CSharp, 4.0.0}",
+      "Microsoft.CodeAnalysis.Razor, {Microsoft.CodeAnalysis.Razor, 6.0.0}",
+      "Microsoft.Extensions.DependencyModel, {Microsoft.Extensions.DependencyModel, 7.0.0}",
+      "Newtonsoft.Json, {Newtonsoft.Json, 13.0.3}",
+      "System.Collections.Immutable, {System.Collections.Immutable, 5.0.0}",
+      "System.Reflection.Metadata, {System.Reflection.Metadata, 5.0.0}",
+      "System.Runtime.CompilerServices.Unsafe, {System.Runtime.CompilerServices.Unsafe, 5.0.0}",
+      "System.Text.Encoding.CodePages, {System.Text.Encoding.CodePages, 4.5.1}",
+      "System.Text.Encodings.Web, {System.Text.Encodings.Web, 7.0.0}",
+      "System.Text.Json, {System.Text.Json, 7.0.0}"
+    ],
+    "targetFramework": "net7.0",
+    "typeReuseMode": "All"
+  }
+}

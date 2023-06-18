@@ -1,0 +1,102 @@
+﻿@page
+@model lab7.Pages._3.IndexModel
+
+@{
+    ViewData["Title"] = "Список дел";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<!-- Форма для добавления нового дела -->
+<form method="post" asp-page-handler="Add" class="add-form">
+    <label for="itemName">Название:</label>
+    <input type="text" id="itemName" name="itemName" required />
+    <button type="submit">Добавить</button>
+</form>
+
+<!-- Отображение списка дел -->
+@if (Model.ToDoItems != null && Model.ToDoItems.Any())
+{
+    <ul class="todo-list">
+        @foreach (var item in Model.ToDoItems.OrderBy(item => item.Id))
+        {
+            <li class="todo-item">
+                @if (!item.IsComplete)
+                {
+                    <form method="post" asp-page-handler="ToggleComplete" asp-route-id="@item.Id">
+                        <button type="submit" class="toggle-complete-button">Зачеркнуть</button>
+                    </form>
+                }
+                else
+                {
+                    <form method="post" asp-page-handler="ToggleComplete" asp-route-id="@item.Id">
+                        <button type="submit" class="toggle-complete-button">Убрать зачеркивание</button>
+                    </form>
+                }
+                <span class="item-text @(item.IsComplete ? "completed" : "")">@item.Name</span>
+              @*  <form method="post" asp-page-handler="Delete" asp-route-id="@item.Id" class="delete-form">
+                    <button type="submit">Удалить</button>
+                </form>*@
+            </li>
+        }
+    </ul>
+
+}
+else
+{
+    <p>Список дел пуст.</p>
+}
+
+<style>
+    .add-form {
+        margin-bottom: 20px;
+    }
+
+    .item-text{
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    .todo-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .todo-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .toggle-complete-button {
+        margin-right: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .item-text.completed {
+        text-decoration: line-through;
+        color: #808080;
+    }
+
+    .delete-form {
+        margin-left: auto;
+    }
+</style>
+
+<script>
+    const toggleCompleteButtons = document.querySelectorAll('.toggle-complete-button');
+
+    toggleCompleteButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const listItem = button.closest('li');
+            const itemText = listItem.querySelector('.item-text');
+
+            itemText.classList.toggle('completed');
+        });
+    });
+</script>
