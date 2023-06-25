@@ -1,19 +1,36 @@
-﻿
-@page
+﻿@page
 @model lab7.Pages.IndexModel
 
-<h1>Из градусов Цельсия в градусы Фаренгейта</h1>
+<h1>Конвертер градусов</h1>
+
+<h2>Из градусов Цельсия в градусы Фаренгейта</h2>
+
+<form method="post">
+    <label for="celsius">Цельсий:</label>
+    <input type="text" id="celsius" name="celsius" asp-for="Celsius" />
+
+    <button type="submit" asp-page-handler="ToFahrenheit">Перевести в градусы Фаренгейта</button>
+</form>
+
+@if (Model.FahrenheitResult != null)
+{
+    <h3>Результат:</h3>
+    <p>Фаренгейт: @string.Format("{0:F2}", Model.FahrenheitResult)</p>
+}
+
+<hr />
+
+<h2>Из градусов Фаренгейта в градусы Цельсия</h2>
 
 <form method="post">
     <label for="fahrenheit">Фаренгейт:</label>
-    <input type="text" id="fahrenheit" name="fahrenheit" />
+    <input type="text" id="fahrenheit" name="fahrenheit" asp-for="Fahrenheit" />
 
-    <input type="submit" value="Перевести в градусы Цельсия" />
+    <button type="submit" asp-page-handler="ToCelsius">Перевести в градусы Цельсия</button>
 </form>
 
-@if (Model.Result != null)
+@if (Model.CelsiusResult != null)
 {
-    <h2>Результат:</h2>
-    <p>Цельсий: @Model.Result</p>
+    <h3>Результат:</h3>
+    <p>Цельсий: @string.Format("{0:F2}", Model.CelsiusResult)</p>
 }
-

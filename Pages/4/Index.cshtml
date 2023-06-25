@@ -117,6 +117,6 @@
 
 @if (Model.ConversionResult.HasValue)
 {
-    <h2>Result:</h2>
-    <p>@Model.ConversionResult.Value</p>
+    <h2>Результат:</h2>
+    <p>@string.Format("{0:F2}", Model.ConversionResult.Value)</p>
 }
